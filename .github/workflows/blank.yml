@@ -7,4 +7,3 @@
 
 - name: Execute deployment script via SSH
   run: ssh -i ~/.ssh/id_rsa inhouse@52.86.72.158 'bash -s' < ./home/inhouse/start.sh
-
