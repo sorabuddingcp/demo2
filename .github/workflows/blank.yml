@@ -12,10 +12,14 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.3
       with:
         ssh-private-key: ${{ secrets.GCP_SSH_KEY }}
 
-      - name: Execute remote command
+    - name: Copy files to GCP VM
+      run: scp -o StrictHostKeyChecking=no -r ./ inhouse@52.86.72.158:/home/inhouse/my_app
+
+    - name: Execute remote command
       run: ssh -o StrictHostKeyChecking=no inhouse@52.86.72.158 "bash -s" < /home/inhouse/start.sh
