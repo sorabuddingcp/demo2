@@ -18,6 +18,6 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.GCP_SSH_KEY }}
 
-    - name: Copy files to GCP server
-      run: scp -o StrictHostKeyChecking=no -r ./ inhouse@52.86.72.158:/home/inhouse/my_app
+   - name: Execute remote command
+      run: ssh -o StrictHostKeyChecking=no inhouse@52.86.72.158 "bash -s" < /home/inhouse/start.sh
 
